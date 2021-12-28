@@ -38,7 +38,7 @@ const Navigation = ({ closeNav }) => {
 						<Link to="/add" className="nav-body-content-link">
 							<div className="nav-body-content-link__icon">
 								<span className="material-icons">
-									edit_note
+									add_circle_outline
 								</span>
 							</div>
 							<div className="nav-body-content-link__content">
@@ -53,7 +53,7 @@ const Navigation = ({ closeNav }) => {
 									<div className="nav-body-content-head">
 										<div className="nav-body-content-head__icon">
 											<span className="material-icons">
-												inventory
+                                            list
 											</span>
 										</div>
 										<div

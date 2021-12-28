@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import GlobalContext from "../Context/GlobalContext";
 function Theme() {
-    const [theme, setTheme] = useState("light");
-    const body = document.querySelector("body");
-    function changeTheme() {
-        setTheme((theme === "light") ? "dark" : "light");
-    }
-    body.setAttribute("class", theme);
-    return (
-        <button title={`${theme} Mode`} className="theme icon" onClick={changeTheme}>
-            <span className="theme-icon material-icons" id={theme}>
-                {`${theme}_mode`}
-            </span>
-        </button>
-    )
+	const {theme, setTheme} = useContext(GlobalContext);
+	const body = document.querySelector("body");
+	function changeTheme() {
+		setTheme(theme ? false : true);
+	}
+	body.setAttribute("class", theme ? "light" : "dark");
+	return (
+		<button
+			title={`${theme ? "Light" : "Dark"} Mode`}
+			className="theme icon"
+			onClick={changeTheme}
+		>
+			<span
+				className="theme-icon material-icons"
+				id={theme ? "light" : "dark"}
+			>
+				{`${theme ? "light" : "dark"}_mode`}
+			</span>
+		</button>
+	);
 }
 export default Theme;

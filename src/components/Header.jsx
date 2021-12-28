@@ -16,7 +16,7 @@ const Header = ({ openNav }) => {
 	return (
 		<header className="header">
 			<div className="header-left">
-				<div className="header-left-burger">
+				<div className="header-left-burger">	
 					<button
 						title="Main Menu"
 						className="header-left-burger__button icon"
@@ -63,6 +63,20 @@ const Header = ({ openNav }) => {
 					<span className="material-icons">
 						{gridView ? "grid_view" : "view_list"}
 					</span>
+				</button>
+				<button
+					title="About"
+					className="header-right__button icon"
+					onClick={() => navigate("/info")}
+				>
+					<span className="material-icons">info</span>
+				</button>
+				<button
+					title="Contact Us"
+					className="header-right__button icon"
+					onClick={() => navigate("/contact")}
+				>
+					<span className="material-icons">contact_support</span>
 				</button>
 				<button
 					title="Settings"
