@@ -5,6 +5,13 @@ import Theme from "./theme";
 
 const Header = ({ openNav }) => {
 	const [gridView, setGridView] = useState(true);
+	const [rotate, setRotate] = useState(false);
+	const triggerRotate = () => {
+		setRotate(true);
+		setTimeout(() => {
+			setRotate(false);
+		}, 5000);
+	};
 	const navigate = useNavigate();
 	return (
 		<header className="header">
@@ -37,7 +44,14 @@ const Header = ({ openNav }) => {
 				<Theme />
 				<button
 					title="Sync / Refresh"
-					className="header-right__button icon"
+					className="header-right__button icon sync-btn"
+					style={{
+						transition: "all var(--transition-time) ease-in-out",
+						animation: rotate
+							? "rotate 1s linear infinite"
+							: "none",
+					}}
+					onClick={triggerRotate}
 				>
 					<span className="material-icons">sync</span>
 				</button>

@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const App = () => {
 	const location = useLocation();
@@ -12,6 +13,9 @@ const App = () => {
 	useEffect(() => {
 		setShowNav(false);
 	}, [location.pathname]);
+	const axiosInstance = axios.create({
+		baseURL: "",
+	});
 	return (
 		<>
 			<Header openNav={() => setShowNav(true)} />

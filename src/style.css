@@ -325,7 +325,8 @@ button {
   text-size-adjust: inherit;
   text-indent: inherit;
   text-align: inherit;
-  appearance: inherit; }
+  appearance: inherit;
+  cursor: pointer; }
   button:hover, button:active, button:focus, button:focus-visible, button:focus-within {
     border: none;
     outline: none; }
@@ -759,6 +760,75 @@ button {
   .header-right {
     padding: 0 1rem; }
 
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg); }
+  25% {
+    transform: rotateZ(-90deg); }
+  50% {
+    transform: rotateZ(-180deg); }
+  75% {
+    transform: rotateZ(-270deg); }
+  100% {
+    transform: rotateZ(-360deg); } }
+
+.note {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  border-radius: 10px;
+  border: 0.5px solid var(--back-shadow-light);
+  margin: 1rem;
+  overflow: hidden; }
+  .note-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column; }
+  .note-title {
+    width: 100%;
+    padding: 1rem 1rem; }
+    .note-title__text {
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+  .note-content {
+    padding: 0.25rem 1rem; }
+  .note-controls {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem 0;
+    transition: all var(--transition-time) ease-in-out;
+    opacity: 0; }
+  .note-control {
+    border-radius: 500px;
+    background-color: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.6rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; }
+    .note-control:hover {
+      background-color: var(--back-shadow); }
+    .note-control .material-icons {
+      font-size: 1.1rem;
+      position: absolute; }
+  .note:hover {
+    border: 0.5px solid var(--back-shadow); }
+  .note:hover .note-controls {
+    opacity: 1; }
+
 .nav-frame {
   width: 100%;
   height: 100vh;
@@ -823,7 +893,8 @@ button {
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: all var(--transition-time) ease-in-out; }
+      transition: all var(--transition-time) ease-in-out;
+      border-radius: 5px; }
       .nav-body-content-link__icon, .nav-body-content-head__icon {
         width: 20%;
         height: 100%;
@@ -836,8 +907,8 @@ button {
         display: flex;
         justify-content: flex-start;
         align-items: center; }
-      .nav-body-content-link:hover, .nav-body-content-head:hover {
-        background-color: rgba(0, 0, 0, 0.05); }
+    .nav-body-content-link:hover {
+      background-color: rgba(0, 0, 0, 0.05); }
     .nav-body-content .accordian {
       border-bottom: 0; }
       .nav-body-content .accordian-header {
