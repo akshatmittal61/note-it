@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import favicon from "../images/favicon.svg";
+import Theme from "./theme";
 
 const Header = ({ openNav }) => {
 	const [gridView, setGridView] = useState(true);
+	const navigate = useNavigate();
 	return (
 		<header className="header">
 			<div className="header-left">
@@ -15,7 +18,7 @@ const Header = ({ openNav }) => {
 						<span className="material-icons">menu</span>
 					</button>
 				</div>
-				<div className="header-left-logo">
+				<Link className="header-left-logo" to="/">
 					<div className="header-left-logo-image">
 						<img
 							src={favicon}
@@ -28,12 +31,10 @@ const Header = ({ openNav }) => {
 							Note It
 						</span>
 					</div>
-				</div>
+				</Link>
 			</div>
 			<div className="header-right">
-				<button title="Theme" className="header-right__button icon">
-					<span className="material-icons">light_mode</span>
-				</button>
+				<Theme />
 				<button
 					title="Sync / Refresh"
 					className="header-right__button icon"
@@ -49,7 +50,11 @@ const Header = ({ openNav }) => {
 						{gridView ? "grid_view" : "view_list"}
 					</span>
 				</button>
-				<button title="Settings" className="header-right__button icon">
+				<button
+					title="Settings"
+					className="header-right__button icon"
+					onClick={() => navigate("/settings")}
+				>
 					<span className="material-icons">settings</span>
 				</button>
 			</div>
