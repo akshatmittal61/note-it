@@ -3,8 +3,21 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Note from "../components/Note";
 import GlobalContext from "../Context/GlobalContext";
 
+/*{
+		id: 0,
+		title: "Google I/O",
+		content:
+			"Google I/O is back May 18-20, online, and free for everyone. Join us live., I/O is live keynotes, hands-on learning with Google experts, and a first look at the latest developer products., Make sure to check back for more updates!",
+		linkURL: "https://g.co/io",
+		linkText: "Google I/O keynote",
+		color: "bgcolor",
+		image: "",
+		list: "",
+		archive: false,
+		trash: false,
+	} */
 const Home = () => {
-	const {axiosInstance} = useContext(GlobalContext);
+	const { axiosInstance } = useContext(GlobalContext);
 	const [allNotes, setAllNotes] = useState([]);
 	axiosInstance.get("/api/notes").then((res) => setAllNotes(res.data));
 	return (
@@ -24,8 +37,11 @@ const Home = () => {
 							{allNotes.map((note, index) => (
 								<Note
 									title={note.title}
-									content={note.description}
+									content={note.content}
+									linkURL={note.linkURL}
+									linkText={note.linkText}
 									color={note.color}
+									image={note.image}
 									key={index}
 								/>
 							))}

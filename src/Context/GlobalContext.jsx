@@ -7,7 +7,7 @@ export const GlobalProvider = ({ children }) => {
 	const [theme, setTheme] = useState(true);
 	const [gridView, setGridView] = useState(true);
 	const axiosInstance = axios.create({
-		baseURL: "http://planner-61.herokuapp.com/",
+		baseURL: "http://localhost:5000/",
 	});
 	return (
 		<GlobalContext.Provider

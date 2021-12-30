@@ -3,13 +3,15 @@ import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Route, Routes, useLocation } from "react-router-dom";
-import axios from "axios";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import { GlobalProvider } from "./Context/GlobalContext";
+import Add from "./pages/Add";
+import Fab from "./components/Fab";
 
 const App = () => {
 	const location = useLocation();
+	const navigate = useNavigate();
 	AOS.init();
 	const [showNav, setShowNav] = useState(false);
 	useEffect(() => {
@@ -22,8 +24,12 @@ const App = () => {
 			<main>
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="/add" element={<Add />} />
 				</Routes>
 			</main>
+			{location.pathname !== "/add" && (
+				<Fab icon="add" onClick={() => navigate("/add")} />
+			)}
 		</GlobalProvider>
 	);
 };

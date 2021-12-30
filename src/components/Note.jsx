@@ -1,7 +1,15 @@
 import React, { useContext } from "react";
 import GlobalContext from "../Context/GlobalContext";
+import favicon from '../images/favicon.svg'
 
-const Note = ({ title, content, color = "bgcolor" }) => {
+const Note = ({
+	title,
+	content,
+	linkURL,
+	linkText,
+	color = "bgcolor",
+	image,
+}) => {
 	const { theme } = useContext(GlobalContext);
 	return (
 		<div className="note-box">
@@ -9,13 +17,20 @@ const Note = ({ title, content, color = "bgcolor" }) => {
 				className="note"
 				style={{
 					backgroundColor: `var(--${color}-${theme ? "100" : "700"})`,
+					backgroundImage: `url(http://www.transparenttextures.com/patterns/${image}.png)`,
 				}}
 			>
 				<div className="note-container">
 					<div className="note-title">
 						<span className="note-title__text">{title}</span>
+						<a href={linkURL} target={(linkURL === "" || linkURL === "#") ? "_self" : "_blank"} rel="noreferrer">
+                            <img src={(linkURL !== "" && linkURL !== "#") ? "https://s2.googleusercontent.com/s2/favicons?domain_url=" + linkURL : favicon} className="note-head__img" alt="note link favicon" />
+                        </a>
 					</div>
 					<div className="note-content">{content}</div>
+					<div className="note-content">
+						<a href={linkURL} target={(linkURL === "" || linkURL === "#") ? "_self" : "_blank"} rel="noreferrer">{linkText}</a>
+					</div>
 				</div>
 				<div className="note-controls">
 					<button className="note-control" title="Background Color">

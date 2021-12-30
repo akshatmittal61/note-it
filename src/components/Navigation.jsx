@@ -35,18 +35,6 @@ const Navigation = ({ closeNav }) => {
 						</Link>
 					</div>
 					<div className="nav-body-content">
-						<Link to="/add" className="nav-body-content-link">
-							<div className="nav-body-content-link__icon">
-								<span className="material-icons">
-									add_circle_outline
-								</span>
-							</div>
-							<div className="nav-body-content-link__content">
-								Add a Note
-							</div>
-						</Link>
-					</div>
-					<div className="nav-body-content">
 						<Accordian
 							summary={
 								<>
@@ -100,6 +88,30 @@ const Navigation = ({ closeNav }) => {
 							</div>
 							<div className="nav-body-content-link__content">
 								Trash
+							</div>
+						</Link>
+					</div>
+					<div className="nav-body-content">
+						<Link to="/about" className="nav-body-content-link">
+							<div className="nav-body-content-link__icon">
+								<span className="material-icons">
+									info
+								</span>
+							</div>
+							<div className="nav-body-content-link__content">
+								About
+							</div>
+						</Link>
+					</div>
+					<div className="nav-body-content">
+						<Link to="/contact" className="nav-body-content-link">
+							<div className="nav-body-content-link__icon">
+								<span className="material-icons">
+								contact_support
+								</span>
+							</div>
+							<div className="nav-body-content-link__content">
+								Contact Us
 							</div>
 						</Link>
 					</div>
