@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import { GlobalProvider } from "./Context/GlobalContext";
 import Add from "./pages/Add";
 import Fab from "./components/Fab";
+import Archives from "./pages/Archives";
 
 const App = () => {
 	const location = useLocation();
@@ -25,6 +26,7 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/add" element={<Add />} />
+					<Route path="/archive" element={<Archives />} />
 				</Routes>
 			</main>
 			{location.pathname !== "/add" && (

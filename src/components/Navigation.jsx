@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+import GlobalContext from "../Context/GlobalContext";
 import { Link } from "react-router-dom";
 import Accordian from "./Accordian/Accordian";
 import _ from "lodash";
 
 const Navigation = ({ closeNav }) => {
-	const lists = ["Work", "Home", "Personal", "Poems", "Write Ups"];
+	const { axiosInstance } = useContext(GlobalContext);
+	const [lists, setLists] = useState([]);
+	useEffect(() => {
+		axiosInstance.get("/api/lists").then((res) => setLists(res.data));
+	}, []);
 	return (
 		<div className="nav-frame">
 			<div className="nav-box" data-aos="fade-right">

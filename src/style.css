@@ -383,7 +383,8 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: inherit; }
+    border-radius: inherit;
+    transition: all var(--transition-time) ease-in-out; }
   .btn:hover::after {
     background-color: var(--back-shadow-light); }
   .btn:active::after, .btn:focus::after {
@@ -568,7 +569,8 @@ button {
   border-radius: 10px;
   border: 0.5px solid var(--back-shadow-light);
   margin: 1rem auto;
-  overflow: hidden; }
+  overflow: hidden;
+  transition: all var(--transition-time) ease-in-out; }
   .note-container {
     width: 100%;
     height: 80%;
@@ -597,6 +599,8 @@ button {
     padding: 0.25rem 1rem;
     max-height: 15rem;
     overflow: hidden; }
+    .note-content a:hover {
+      text-decoration: underline; }
   .note-controls {
     width: 100%;
     display: flex;
@@ -717,11 +721,14 @@ button {
 
 .add {
   width: 100%;
+  height: 89vh;
   display: flex;
-  flex-flow: column; }
+  flex-flow: column;
+  justify-content: center;
+  align-items: center; }
   .add-head {
     width: 100%;
-    height: 3rem;
+    height: 10%;
     font-size: 2.5rem;
     line-height: 3rem;
     padding: 2.5rem 2rem;
@@ -730,6 +737,7 @@ button {
     align-items: center; }
   .add-body {
     width: 100%;
+    height: 90%;
     padding: 1rem;
     display: flex;
     justify-content: center;
@@ -741,8 +749,16 @@ button {
     justify-content: center;
     align-items: center;
     flex-flow: column; }
+    @media (max-width: 880px) {
+      .add-form {
+        width: 85%; } }
+    @media (max-width: 672px) {
+      .add-form {
+        width: 95%; } }
     .add-form__input {
       width: 75%; }
+    .add-form textarea {
+      height: 50%; }
     .add-form-controls {
       width: 75%;
       display: flex;
