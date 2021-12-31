@@ -9,6 +9,7 @@ import { GlobalProvider } from "./Context/GlobalContext";
 import Add from "./pages/Add";
 import Fab from "./components/Fab";
 import Archives from "./pages/Archives";
+import Trash from "./pages/Trash";
 
 const App = () => {
 	const location = useLocation();
@@ -27,6 +28,7 @@ const App = () => {
 					<Route path="/" element={<Home />} />
 					<Route path="/add" element={<Add />} />
 					<Route path="/archive" element={<Archives />} />
+					<Route path="/trash" element={<Trash />} />
 				</Routes>
 			</main>
 			{location.pathname !== "/add" && (
