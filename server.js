@@ -13,7 +13,7 @@ let notes = [
 		title: "Google I/O",
 		content:
 			"Google I/O is back May 18-20, online, and free for everyone. Join us live., I/O is live keynotes, hands-on learning with Google experts, and a first look at the latest developer products., Make sure to check back for more updates!",
-		linkURL: "https://g.co/io",
+		linkURL: "g.co/io",
 		linkText: "Google I/O keynote",
 		color: "blue",
 		image: "",

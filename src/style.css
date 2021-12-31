@@ -775,11 +775,15 @@ button {
       justify-content: center;
       align-items: center; }
 
-.home {
+.home,
+.archives,
+.bin {
   width: 100%;
   display: flex;
   flex-flow: column; }
-  .home-head {
+  .home-head,
+  .archives-head,
+  .bin-head {
     width: 100%;
     height: 3rem;
     font-size: 2.5rem;
@@ -788,7 +792,9 @@ button {
     display: flex;
     justify-content: flex-start;
     align-items: center; }
-  .home-body {
+  .home-body,
+  .archives-body,
+  .bin-body {
     width: 100%;
     padding: 0 1rem; }
 
