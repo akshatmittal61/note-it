@@ -3,16 +3,21 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import Note from "../components/Note";
 import GlobalContext from "../Context/GlobalContext";
 
-const Archives = () => {
+const Page = ({ listName }) => {
 	const { axiosInstance } = useContext(GlobalContext);
 	const [allNotes, setAllNotes] = useState([]);
 	useEffect(() => {
-		axiosInstance.get("/api/archives").then((res) => setAllNotes(res.data));
+		axiosInstance.get("/api/notes").then((res) => {
+			let response = res.data;
+			response.map((item) => {
+				if (item.list === listName) setAllNotes([...allNotes, item]);
+			});
+		});
 	}, []);
 	return (
 		<section className="archives">
 			<div className="archives-head">
-				<span className="archives-head__text">Archived Notes</span>
+				<span className="archives-head__text">{listName}</span>
 			</div>
 			<div className="archives-body">
 				<div className="archives-body-content">
@@ -23,19 +28,22 @@ const Archives = () => {
 						}}
 					>
 						<Masonry>
-							{allNotes.map((note, index) => (
-								<Note
-									title={note.title}
-									content={note.content}
-									linkURL={note.linkURL}
-									linkText={note.linkText}
-									color={note.color}
-									image={note.image}
-									archive={note.archive}
-									trash={note.trash}
-									key={index}
-								/>
-							))}
+							{allNotes.map(
+								(note, index) =>
+									note.list === listName && (
+										<Note
+											title={note.title}
+											content={note.content}
+											linkURL={note.linkURL}
+											linkText={note.linkText}
+											color={note.color}
+											image={note.image}
+											archive={note.archive}
+											trash={note.trash}
+											key={index}
+										/>
+									)
+							)}
 						</Masonry>
 					</ResponsiveMasonry>
 				</div>
@@ -44,4 +52,4 @@ const Archives = () => {
 	);
 };
 
-export default Archives;
+export default Page;

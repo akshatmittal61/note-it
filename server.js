@@ -124,6 +124,8 @@ let notes = [
 	},
 ];
 let lists = [];
+let archives = [];
+let trash = [];
 const updateLists = () => {
 	let allLists = [];
 	notes.map((note) => {
@@ -131,7 +133,23 @@ const updateLists = () => {
 	});
 	lists = [...new Set(allLists)];
 };
+const updateArchives = () => {
+	let allArchives = [];
+	notes.map((note) => {
+		allArchives = note.archive ? [...allArchives, note] : [...allArchives];
+	});
+	archives = [...new Set(allArchives)];
+};
+const updateBin = () => {
+	let allTrash = [];
+	notes.map((note) => {
+		allTrash = note.trash ? [...allTrash, note] : [...allTrash];
+	});
+	trash = [...new Set(allTrash)];
+};
 updateLists();
+updateArchives();
+updateBin();
 const images = [
 	"3Px Tile",
 	"45 Degree Fabric (Dark)",
@@ -535,19 +553,28 @@ const images = [
 app.get("/", (req, res) => {
 	console.log(lists);
 	updateLists();
+	updateArchives();
+	updateBin();
+	res.send(notes);
+});
+app.get("/api/notes", (req, res) => {
 	res.send(notes);
 });
 app.get("/api/lists", (req, res) => {
 	res.send(lists);
 });
-app.get("/api/notes", (req, res) => {
-	res.send(notes);
+app.get("/api/archives", (req, res) => {
+	res.send(archives);
+});
+app.get("/api/bin", (req, res) => {
+	res.send(trash);
 });
 app.post("/api/new", (req, res) => {
 	const newNote = { id: notes.length, ...req.body };
 	console.log(newNote);
 	notes = [...notes, newNote];
 	updateLists();
+	updateArchives();
 });
 
 const PORT = process.env.PORT || 5000;
