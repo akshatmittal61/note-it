@@ -7,6 +7,7 @@ import _ from "lodash";
 const Navigation = ({ closeNav }) => {
 	const { axiosInstance } = useContext(GlobalContext);
 	const [lists, setLists] = useState([]);
+	const [allNotes, setAllNotes] = useState([]);
 	useEffect(() => {
 		axiosInstance.get("/api/lists").then((res) => setLists(res.data));
 	}, []);
@@ -46,7 +47,7 @@ const Navigation = ({ closeNav }) => {
 									<div className="nav-body-content-head">
 										<div className="nav-body-content-head__icon">
 											<span className="material-icons">
-                                            list
+												list
 											</span>
 										</div>
 										<div
@@ -99,9 +100,7 @@ const Navigation = ({ closeNav }) => {
 					<div className="nav-body-content">
 						<Link to="/about" className="nav-body-content-link">
 							<div className="nav-body-content-link__icon">
-								<span className="material-icons">
-									info
-								</span>
+								<span className="material-icons">info</span>
 							</div>
 							<div className="nav-body-content-link__content">
 								About
@@ -112,7 +111,7 @@ const Navigation = ({ closeNav }) => {
 						<Link to="/contact" className="nav-body-content-link">
 							<div className="nav-body-content-link__icon">
 								<span className="material-icons">
-								contact_support
+									contact_support
 								</span>
 							</div>
 							<div className="nav-body-content-link__content">

@@ -568,7 +568,7 @@ button {
   flex-flow: column;
   border-radius: 10px;
   border: 0.5px solid var(--back-shadow-light);
-  margin: 1rem auto;
+  margin: 0.5rem auto;
   overflow: hidden;
   transition: all var(--transition-time) ease-in-out; }
   .note-container {
@@ -606,7 +606,7 @@ button {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
     transition: all var(--transition-time) ease-in-out;
     opacity: 0; }
   .note-control {
@@ -619,12 +619,11 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; }
+    transition: all var(--transition-time) ease-in-out; }
     .note-control:hover {
       background-color: var(--back-shadow); }
     .note-control .material-icons {
-      font-size: 1.1rem;
-      position: absolute; }
+      font-size: 1.1rem; }
   .note:hover {
     border: 0.5px solid var(--back-shadow); }
   .note:hover .note-controls {

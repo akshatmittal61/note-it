@@ -4,7 +4,7 @@ import Note from "../components/Note";
 import GlobalContext from "../Context/GlobalContext";
 
 const Page = ({ listName }) => {
-	const { axiosInstance } = useContext(GlobalContext);
+	const { axiosInstance, gridView } = useContext(GlobalContext);
 	const [allNotes, setAllNotes] = useState([]);
 	useEffect(() => {
 		axiosInstance.get("/api/notes").then((res) => {
@@ -22,7 +22,11 @@ const Page = ({ listName }) => {
 			<div className="archives-body">
 				<div className="archives-body-content">
 					<ResponsiveMasonry
-						columnsCountBreakPoints={{ 550: 1, 672: 2, 880: 4 }}
+						columnsCountBreakPoints={{
+							550: 1,
+							672: gridView ? 2 : 1,
+							880: gridView ? 4 : 1,
+						}}
 						style={{
 							overflodw: "hidden",
 						}}

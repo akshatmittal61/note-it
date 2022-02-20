@@ -22,6 +22,18 @@ const Note = ({
 			linkURL = "https://" + linkURL;
 		}
 	}
+	const onCopy = () => {
+		// e.preventDefault();
+		console.log("Copy it");
+		if (linkText === "" || linkURL === "")
+			navigator.clipboard.writeText(
+				title + "\n\n" + content + "\n" + linkURL + linkText
+			);
+		else
+			navigator.clipboard.writeText(
+				title + "\n\n" + content + "\n" + linkURL + " : " + linkText
+			);
+	};
 	return (
 		<div className="note-box">
 			<div
@@ -71,21 +83,48 @@ const Note = ({
 					</div>
 				</div>
 				<div className="note-controls">
-					<button className="note-control" title="Background Color">
-						<span className="material-icons">palette</span>
+					{!trash && (
+						<button
+							className="note-control"
+							title="Background Color"
+						>
+							<span className="material-icons">palette</span>
+						</button>
+					)}
+					{!trash && (
+						<button
+							className="note-control"
+							title="Background Image"
+						>
+							<span className="material-icons">wallpaper</span>
+						</button>
+					)}
+					<button
+						className="note-control"
+						title="Copy Note"
+						onClick={() => onCopy()}
+					>
+						<span className="material-icons">content_copy</span>
 					</button>
-					<button className="note-control" title="Background Image">
-						<span className="material-icons">wallpaper</span>
-					</button>
-					<button className="note-control" title="Add to List">
-						<span className="material-icons">playlist_add</span>
-					</button>
-					<button className="note-control" title="Archive Note">
-						<span className="material-icons">
-							{archive ? "unarchive" : "archive"}
-						</span>
-					</button>
-					<button className="note-control" title="Delete Note">
+					{!trash && (
+						<button className="note-control" title="Add to List">
+							<span className="material-icons">playlist_add</span>
+						</button>
+					)}
+					{!trash && (
+						<button
+							className="note-control"
+							title={archive ? "Unarchive Note" : "Archive Note"}
+						>
+							<span className="material-icons">
+								{archive ? "unarchive" : "archive"}
+							</span>
+						</button>
+					)}
+					<button
+						className="note-control"
+						title={trash ? "Restore Note" : "Delete Note"}
+					>
 						<span className="material-icons">
 							{trash ? "restore" : "delete"}
 						</span>
